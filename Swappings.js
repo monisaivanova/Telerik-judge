@@ -86,6 +86,6 @@ swappingNumbers.forEach((number) => {
 
     leftEnd = newLeftEnd || middle;
     rightEnd = newRightEnd || middle;
-})
+});
 
-print([...leftEnd].join(' '))
+print([...leftEnd].join(' '));
