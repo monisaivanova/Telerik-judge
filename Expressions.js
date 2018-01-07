@@ -7,8 +7,8 @@ const getGets = (arr) => {
     };
 };
 const gets = this.gets || getGets([
-    '123',
-    '6',
+    '000',
+    '0',
 ]);
 // let gets = this.gets || require('readline-sync').question;
 const print = this.print || console.log;
@@ -16,11 +16,10 @@ const print = this.print || console.log;
 
 let counter = 0;
 let arr = gets().split('').join('a').split('');
-let digitsCount = arr.length;
 let result;
 const N = +gets();
 const generateVariationsWithoutRep = (n, k, index, variation) => {
-    if (index === digitsCount) {
+    if (index === arr.length) {
         // converts the current variation into an evauluatable string
         result = arr.filter((x) => x !== 'b').join('');
         print(result);
