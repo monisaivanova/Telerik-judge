@@ -15,33 +15,24 @@ const print = this.print || console.log;
 
 const N = +gets();
 const arr = gets().split(' ').map(Number);
-const arr2 = [];
-const arr3 = [];
-arr2.length = 1000;
-arr3.length = 1000;
-const map = new Map();
-map.set(0, 0);
-let x = 0;
-const func = (a) => {
-    if (map.has(arr[a]) || arr[a] === 0) {
-        map.set(arr[a], `(${arr[a]}`)
-        x += 1;
-        return;
+const arr2 = [0];
+let i = 0;
+while (true) {
+    arr2.push(arr[i]);
+    arr[i] = true;
+    i = arr2[arr2.length - 1];
+
+    if (typeof arr[i] === 'undefined') {
+        arr2.pop();
+        print(arr2.join(' '));
+        break;
+    } else if (arr[i] === true) {
+        // print(i);
+        arr2.pop();
+        // print(arr2);
+        const firstInCycle = arr2.indexOf(i);
+        const final = arr2.slice(0, firstInCycle).join('') + '(' + arr2.slice(firstInCycle, arr2.length).join(' ') + ')';
+        print(final);
+        break;
     }
-    if (arr[a] < arr.length && arr[a] > 0) {
-        map.set(arr[a], arr[a]);
-        func(arr[a]);
-    } else {
-        return;
-    }
-};
-func(0);
-if (x === 0) {
-    print([...map.values()].join(' '));
-} else {
-    x = [...map.values()].join(' ');
-    if (x.indexOf('(') > 0) {
-        x = x.slice(0, x.indexOf('(') - 1) + x.slice(x.indexOf('('));
-    }
-    print(x + ')');
 }
