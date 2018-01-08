@@ -16,37 +16,28 @@ const print = this.print || console.log;
 
 let counter = 0;
 let arr = gets().split('').join('a').split('');
-let result;
+// let result;
 const N = +gets();
-const generateVariationsWithoutRep = (n, k, index, variation) => {
+const generateVariationsWithoutRep = (n, index) => {
     if (index === arr.length) {
-        // converts the current variation into an evauluatable string
-        result = arr.filter((x) => x !== 'b').join('');
-        print(result);
-        
-        // evaluates the string and increases the counter if correct
-        if (eval(result) === N) {
+        // result = arr.filter((x) => x !== 'b').join('');
+        if (eval(arr.join('')) === N) {
+            // print(result);
             counter += 1;
         }
         return;
     }
 
     for (let i = 0; i < n.length; i += 1) {
-        // check if a combination of numbers (e.g. 012) starts with 0
-        // and dismisses the variation
-        if (n[i] === 'b' && arr[index - 1] === '0') {
+        if (i === 3 && arr[index - 1] === '0') {
             continue;
         }
         arr[index] = n[i];
-        generateVariationsWithoutRep(n, k, index + 2, variation);
+        generateVariationsWithoutRep(n, index + 2);
     }
 }
 
-const n = ['*', '+', '-', 'b'];
-const k = arr.length - 1;
-const variation = Array.from({
-    length: k,
-});
-generateVariationsWithoutRep(n, k, 1, variation);
+const n = ['*', '+', '-', ''];
+generateVariationsWithoutRep(n, 1);
 
 print(counter);
