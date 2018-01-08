@@ -7,19 +7,20 @@ const getGets = (arr) => {
     };
 };
 const gets = this.gets || getGets([
-    '000',
-    '0',
+    '105',
+    '5',
 ]);
 // let gets = this.gets || require('readline-sync').question;
 const print = this.print || console.log;
 
 
 let counter = 0;
-let arr = gets().split('').join('a').split('');
+const arr = gets().split('').join(' ').split('');
 // let result;
 const N = +gets();
 const generateVariationsWithoutRep = (n, index) => {
     if (index === arr.length) {
+        // print(arr.join(''));
         // result = arr.filter((x) => x !== 'b').join('');
         if (eval(arr.join('')) === N) {
             // print(result);
@@ -29,8 +30,10 @@ const generateVariationsWithoutRep = (n, index) => {
     }
 
     for (let i = 0; i < n.length; i += 1) {
-        if (i === 3 && arr[index - 1] === '0') {
-            continue;
+        if (arr[index - 1] === '0') {
+            if (i === 3) {
+                continue;
+            }
         }
         arr[index] = n[i];
         generateVariationsWithoutRep(n, index + 2);

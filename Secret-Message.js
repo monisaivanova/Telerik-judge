@@ -28,9 +28,9 @@ while (i >= 0) {
         for (let j = i - 1; j >= -1; j -= 1) {
             if (isNaN(+str[j]) || j === -1) {
                 multiplier = str.slice(j + 1, i);
-                for (let k = 0; k < +multiplier; k += 1) {
-                    result += code;
-                }
+                // for (let k = 0; k < +multiplier; k += 1) {
+                    result = code.repeat(Number(multiplier));
+                // }
                 str = str.slice(0, j + 1) + result + str.slice(end + 1);
                 indicator += 1;
                 // print(str);

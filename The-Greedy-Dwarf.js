@@ -52,13 +52,13 @@ while (true) {
         down = matrix[row + 1][col];
     }
 
-    if (left === 0 && right === 0 &&
-        up === 0 && down === 0) {
+    const max = Math.max(left, right, up, down);
+    if (max === 0) {
         print(coins);
         break;
     }
 
-    let max = Math.max(left, right, up, down);
+    
     if (left === max) {
         col -= 1;
     } else if (right === max) {
