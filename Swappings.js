@@ -1,22 +1,17 @@
 const getGets = (arr) => {
     let index = 0;
-
     return () => {
         const toReturn = arr[index];
         index += 1;
         return toReturn;
     };
 };
-// this is the test
-const test = [
+const gets = this.gets || getGets([
     '12',
-    '11 5 10 6 9 10'
-]
-
-const gets = this.gets || getGets(test);
+    '11 5 10 6 9 10',
+]);
+// let gets = this.gets || require('readline-sync').question;
 const print = this.print || console.log;
-
-// ---------------------------------------
 
 class Node {
     constructor(value, prev) {

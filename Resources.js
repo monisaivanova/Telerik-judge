@@ -23,7 +23,7 @@ const gets = this.gets || getGets([
 // let gets = this.gets || require('readline-sync').question;
 const print = this.print || console.log;
 
-let n = +gets();
+const n = +gets();
 const obj = {};
 let tempArr = [];
 let arr = [];
@@ -41,8 +41,8 @@ for (let i = 0; i < n; i += 1) {
 }
 
 // get the element that doesn't depend on anything
-for (let x in obj) {
-    for (let y in obj) {
+for (const x in obj) {
+    for (const y in obj) {
         if (obj[y].indexOf(x) > -1) {
             key = 0;
             break;
@@ -57,23 +57,21 @@ for (let x in obj) {
 
 // do the magic
 while (arr.length > 0) {
-    arr.sort();
-    arr.reverse();
+    arr.sort((a, b) => a < b);
     currentIndex = arr.pop();
     if (final.indexOf(currentIndex) < 0) {
         final.push(currentIndex);
     }
-    
+
     // check if values have more than 1 dependancy
     if (typeof obj[currentIndex] !== 'undefined') {
         let i = obj[currentIndex].length - 1;
         while (i >= 0) {
-            for (let index in obj) {
+            for (const index in obj) {
                 if (index !== currentIndex) {
                     if (obj[index].indexOf(obj[currentIndex][i]) > -1) {
                         obj[currentIndex].splice(i, 1);
                         break;
-                    } else {
                     }
                 }
             }

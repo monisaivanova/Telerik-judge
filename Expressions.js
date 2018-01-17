@@ -20,10 +20,7 @@ const arr = gets().split('').join(' ').split('');
 const N = +gets();
 const generateVariationsWithoutRep = (n, index) => {
     if (index === arr.length) {
-        // print(arr.join(''));
-        // result = arr.filter((x) => x !== 'b').join('');
         if (eval(arr.join('')) === N) {
-            // print(result);
             counter += 1;
         }
         return;
@@ -38,7 +35,7 @@ const generateVariationsWithoutRep = (n, index) => {
         arr[index] = n[i];
         generateVariationsWithoutRep(n, index + 2);
     }
-}
+};
 
 const n = ['*', '+', '-', ''];
 generateVariationsWithoutRep(n, 1);
