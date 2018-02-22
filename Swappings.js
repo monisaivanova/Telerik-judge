@@ -66,6 +66,7 @@ for (let i = 1; i <= n; i++) {
     const node = new Node(i, arr[i - 1]);
     arr[i] = node;
 }
+Node.detach('5');
 
 let leftEnd = arr[1];
 let rightEnd = arr[n];
